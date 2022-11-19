@@ -18,12 +18,15 @@ import com.TotalWar.LoginRegister.models.MetodosDePago;
 import com.TotalWar.LoginRegister.models.Response;
 import com.TotalWar.LoginRegister.service.IComentarioService;
 import com.TotalWar.LoginRegister.service.IPagoService;
+import com.TotalWar.LoginRegister.service.UsuarioServicio;
 
 
 
 @Controller
 
 public class HomeController {
+	
+
 
 	@GetMapping("/")
 	public String home() {
@@ -75,6 +78,7 @@ public class HomeController {
 		
 		return "Pago";
 	};
+	
 	
 	
 	@GetMapping("/home2")
@@ -174,6 +178,4 @@ public class HomeController {
 	
 	
 }
-
-
 
