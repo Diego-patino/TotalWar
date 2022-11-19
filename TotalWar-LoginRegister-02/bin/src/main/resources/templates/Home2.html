@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+	<head th:replace="/Layout :: head"></head>
+
+<body>
+
+	<header th:replace="/Layout :: header"></header>
+
+	<div class="card mb-3 container" style="max-width: 100%; margin: 10px; margin-top: auto;">
+		<div class="row no-gutters">
+			<div class="col-md-8">
+				<div class="card-body">
+					
+					
+				</div>
+			</div>
+			<div class="col-md-7">
+				
+			</div>
+			
+			
+			<div id="news-feed" class="container">
+			<div class="news-block">
+			 <div class="left-block">
+			 <div class="text-center">
+			 <h5 class="card-title">Lo que dice la ONU sobre la
+						investigación de una “bomba sucia” en Ucrania</h5>
+					<img th:src="@{/Img/bomba.jpg}" width="600" height"600">
+				</div>
+				<small class="text-muted">Last updated 3 mins ago</small>
+			 <article>
+			 
+				<p class="card-text">El organismo de control nuclear de las
+					Naciones Unidas anunció esta semana que buscará cualquier señal de
+					producción de “bombas sucias” en Ucrania, y lo hace a pedido de
+					Kyiv. El director general del Organismo Internacional de Energía
+					Atómica, Rafael Mariano Grossi, describió los planes en una carta
+					el jueves. Dijo que la decisión fue motivada por una solicitud por
+					escrito del gobierno ucraniano, que responde a afirmaciones no
+					probadas de Rusia de que está desarrollando las armas. Los
+					inspectores buscarán cualquier posible actividad nuclear no
+					declarada y materiales relacionados con el desarrollo de bombas
+					sucias en dos lugares, según el comunicado de Grossi. Los
+					resultados se darían a conocer a la junta directiva del organismo y
+					al público lo antes posible, agregó.</p>
+				<br>
+				<p>¿Qué es una bomba sucia?</p>
+				<br>
+				<p>Las armas en cuestión combinan explosivos convencionales como
+					la dinamita con material radiactivo como el uranio. A menudo se las
+					denomina armas para terroristas, no para países, ya que están
+					diseñadas para sembrar el miedo y el pánico más que para eliminar
+					cualquier objetivo militar.</p>
+				<br>
+				<p>¿Qué reclama Rusia?</p>
+				<p>Sin proporcionar ninguna evidencia, Moscú afirma que hay
+					instituciones científicas en Ucrania que albergan la tecnología
+					necesaria para crear una bomba sucia, y que Kyiv planea usarla. La
+					comunidad internacional rechaza esta narrativa: las acusaciones de
+					Rusia han sido refutadas enérgicamente por Ucrania, Estados Unidos,
+					el Reino Unido, la Unión Europea y la OTAN, que a su vez han
+					acusado a Moscú de intentar lanzar su propia operación de bandera
+					falsa, que proporcionaría motivación o justificación de sus propios
+					ataques.</p>
+				<small class="text-muted">Brad Lendon de CNN contribuyó a
+					este informe. </small>
+				</article>
+				</div>	
+				<div class="right-block">
+				<article>
+				<h3>Putin asegura que el mundo está ante “la década más peligrosa desde la II Guerra Mundial”</h3>
+				<p>El mandatario acusa a Occidente de practicar un juego “peligroso, sangriento y sucio” respecto a la guerra en Ucrania</p>
+				</article>
+				
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div class="container d-flex justify-content-center mt-100 mb-100">
+  <div class="row">
+      <div class="col-md-12">
+
+        <div class="card">
+           <div class="card-body">
+               <h4 class="card-title" th:text="${Mensaje}" ></h4>
+               <h6 class="card-subtitle" th:text="${MensajeError}"></h6> </div>
+                                
+               	 <div class="container bootdey">
+					<div class="col-md-12 bootstrap snippets">
+						<div class="panel">
+						  <div class="panel-body">
+						  <form th:action="@{/home2}" method="post" th:object="${comentarios}">
+						  
+						    <input type="text"  size="1022" class="form-control" id="idNombre" name="nombre" placeholder="Dinos tu nombre" th:field="*{nombre}"></input>
+						    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" ></div>
+						    						    
+						    <textarea class="form-control" rows="2"  id="idComentarios" name="comentario" placeholder="Coloca aqui tu comentario" th:field="*{comentario}"></textarea>
+						    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('comentario')}" th:errors="*{comentario}" ></div>
+						    
+						    <textarea class="form-control" rows="1"  id="idFoto" name="foto" placeholder="Coloca aqui tu foto" th:field="*{foto}"></textarea>
+						    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('foto')}" th:errors="*{foto}" ></div>
+						    
+						    <div class="mar-top clearfix">
+						      <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
+						      <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+						      <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+						      <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+						    </div>
+						   </form>
+						  </div>
+						</div>
+
+			           <div class="comment-widgets m-b-20">
+			
+			             <!--  <div class="d-flex flex-row comment-row">
+			                   <div class="p-2">
+			                    <span class="round"><img th:src="${comentarios.foto}" alt="user" width="50"></span>
+			                   </div>
+			                   <div class="comment-text w-100">
+			                       <h5>
+			                        <span th:text="${comentarios.nombre}"></span>
+			                       </h5>
+			                       <div class="comment-footer">
+			                           <span class="date">April 14, 2019</span>
+			                           <span class="label label-info">Pending</span> <span class="action-icons">
+			                                   <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a>
+			                                   <a href="#" data-abc="true"><i class="fa fa-rotate-right"></i></a>
+			                                   <a href="#" data-abc="true"><i class="fa fa-heart"></i></a>
+			                               </span>
+			                       </div>
+			                       <p class="m-b-5 m-t-10"><span th:text="${comentarios.comentario}"></span></p>
+			                   </div>
+			               </div> -->
+			               
+			               <div class="d-flex flex-row comment-row" th:each="listaComentarios : ${listaComentarios}">
+			                   <div class="p-2">
+			                    <span class="round"><img th:src="${listaComentarios.foto}" alt="user" width="65" height="65"></span>
+			                   </div>
+			                   <div class="comment-text w-100">
+			                       <h5>
+			                        <span th:text="${listaComentarios.nombre}"></span>
+			                       </h5>
+			                       <div class="comment-footer">
+			                           <span class="date">April 14, 2019</span>
+			                           <span class="label label-info">Pending</span> <span class="action-icons">
+			                                   <a th:href="@{/home2/editar-comentario/}+ ${listaComentarios.idComentario}" data-abc="true"><i class="fa fa-pencil"></i></a>
+			                                   <a th:href="@{/home2/eliminar-comentario/}+ ${listaComentarios.idComentario}" data-abc="true"><i class="fa fa-trash"></i></a>
+			                               </span>
+			                       </div>
+			                       <p class="m-b-5 m-t-10"><span th:text="${listaComentarios.comentario}"></span></p>
+			                   </div>
+			               </div>
+			           </div>
+			       	 </div>
+			      </div>
+			  </div>
+	      </div>
+	  </div>
+	</div>
+   
+   <footer th:replace="/Layout :: footer"></footer>
+   
+</body>
+</html>
